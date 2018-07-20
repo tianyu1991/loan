@@ -43,3 +43,15 @@ for(i in 1:nrow(test)){
 
  fitted.results2<-as.data.frame(fitted.results)
 t_result<-cbind(test,fitted.results2$p_grade)
+
+      
+       fitted.results2<-as.data.frame(fitted.results)
+t_result<-cbind(test,fitted.results2$p_grade)
+t_result$grade2<-as.numeric(t_result$grade)-1
+t_result$re<-ifelse(t_result$grade2==t_result[,8],0,1)
+sum(t_result$re)/nrow(t_result)
+
+##0.01466987
+ac<-rep(0,10)
+
+ac[1]=1-sum(t_result$re)/nrow(t_result)
